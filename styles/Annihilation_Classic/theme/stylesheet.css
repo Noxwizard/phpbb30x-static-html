@@ -1,0 +1,835 @@
+/*  phpBB3 Style Sheet
+    --------------------------------------------------------------
+	Style name:		Annihilation Classic
+	Original author:	Sevnn
+	Modified by:		Noxwizard
+	
+	This is a port of the phpBB2 Annihilation style
+	
+	Copyright 2009 Annihilation.info
+    --------------------------------------------------------------
+*/
+
+/* Layout
+ ------------ */
+/* 
+* {
+	// Reset browsers default margin, padding and font sizes
+	margin: 0;
+	padding: 0;
+}
+*/
+
+html {
+	font-size: 100%;
+}
+
+body, table, td{
+	/* Text-Sizing with ems: http://www.clagnut.com/blog/348/ */
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	font-size: 10px; /* This sets the default font size to be equivalent to 10px */
+}
+
+body {
+	background-color: #666666;
+	margin: 0;
+}
+
+h1 { 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 12px;
+	color: #ffffff; 
+	text-decoration: none;
+}
+
+.smalltext, .mediumtext, .largetext
+{ 
+	font-family: Verdana, Helvetica; 
+	color: #ffffff
+}
+
+.menutext {
+	font-family: Verdana, Helvetica;
+	font-size: 14px;
+	color: #000000;
+	text-decoration: none;
+}
+
+.smalltext
+{ 
+	font-size : 10px; 
+}
+
+.mediumtext      
+{ 
+	font-size : 11px; 
+}
+
+.largetext, td.row1, td.row2      
+{ 
+	font-size : 13px; 
+}
+
+
+/* Text on the Category Row */
+
+.catrowtext
+{ 
+	font-family:  Verdana, Arial, Helvetica, sans-serif; 
+	font-size : 13px; 
+	color: #ffffff;
+	font-weight: bold 
+}
+
+/* Text on the Top Row */
+ 
+.toprowtext      
+{ 
+	font-family: Verdana, Helvetica; 
+	font-size : 9px; 
+	color: #ffffff; 
+	font-weight: bold 
+}
+
+/* Alternating Cell Colors */
+
+td.row1	        
+{ 
+	background-color: #555555;
+	text-align: left;
+}     
+ 
+td.row2	        
+{ 
+	background-color: #444444;
+	text-align: left;
+}
+
+td.row1c
+{ 
+	background-color: #555555;
+	text-align: center;
+}     
+ 
+td.row2c
+{ 
+	background-color: #444444;
+	text-align: center;
+}
+
+td.row1r
+{ 
+	background-color: #555555;
+	text-align: right;
+}
+
+td.row2r
+{ 
+	background-color: #444444;
+	text-align: right;
+}
+
+td.poll
+{
+	text-align: center;
+}
+
+/* Some More Cell Properties */
+
+td.catrow           
+{ 
+	background-color: #777777;
+	color: #ffffff; 
+	font-size: 13px;
+	font-weight: bold;
+	text-align : center;
+}
+
+
+td.toprow
+{
+	background-color: #999999;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+
+td.tableborder	  
+{ 
+	background-color: #999999;
+}
+
+/* Links */
+
+a, a:link, a:visited
+{ 
+	text-decoration: none; 
+	color: #ffffff; 
+	font-family: Verdana, Helvetica;
+	font-weight : bold;
+}  
+
+a:hover 
+{ 
+	text-decoration: none; 
+	color: #cccccc; 
+	font-family: Verdana, Helvetica;
+	font-weight : bold;
+}
+
+a:active
+{ 
+	text-decoration: none; 
+	color: #ffffff; 
+	font-family: Verdana, Helvetica;
+	font-weight : bold;
+}   
+
+a.menulink, a.menulink:link, a.menulink:active, a.menulink:visited
+{ 
+	font-family: Verdana, Helvetica;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+}  
+
+a.menulink:hover 
+{ 
+	font-family: Verdana, Helvetica;
+	font-size: 14px;
+	font-weight: bold;
+	color: #cc0000;
+	text-decoration: none;
+} 
+
+/* Links to a forum on the Index */
+
+a.forumlink, a.forumlink:link, a.forumlink:visited, a.forumlink:active                 
+{ 
+	text-decoration: none; 
+	font-weight: bold; 
+	font-size: 11px; 
+	color: #ffffff; 
+	font-family: Verdana, Helvetica 
+}
+
+
+a.forumlink:hover         
+{ 
+	text-decoration: none; 
+	font-size: 11px; 
+	font-weight: bold; 
+	color: #cccccc; 
+	font-family: Verdana, Helvetica 
+}
+
+/* Links to a topic while viewing a forum */
+ 
+a.topiclink, a.topiclink:link, a.topiclink:active, a.topiclink:visited                
+{ 
+	text-decoration: none; 
+	font-weight: bold;
+	font-size: 11px; 
+	color: #ffffff; 
+	font-family: Verdana, Helvetica 
+}  
+
+
+a.topiclink:hover         
+{ 
+	text-decoration: none; 
+	font-weight: bold;
+	font-size: 11px; 
+	color: #cccccc; 
+	font-family: Verdana, Helvetica 
+}  
+
+
+a.yellowlink, a.yellowlink:link, a.yellowlink:active, a.yellowlink:visited                
+{ 
+	text-decoration: none; 
+	font-size: 10px; 
+	color: #ffff00; 
+	font-family: Verdana, Helvetica 
+}  
+
+
+a.yellowlink:hover         
+{ 
+	text-decoration: none; 
+	font-size: 10px; 
+	color: #ffff66; 
+	font-family: Verdana, Helvetica 
+}  
+
+ 
+a.catlink, a.catlink:link, a.catlink:visited, a.catlink:active                
+{ 
+	text-decoration: none; 
+	font-weight: bold; 
+	font-size: 13px; 
+	color: #ffffff; 
+	font-family: Verdana, Helvetica  
+}   
+
+
+a.catlink:hover           
+{ 
+	text-decoration: none; 
+	font-weight: bold; 
+	font-size: 13px; 
+	color: #cccccc; 
+	font-family: Verdana, Helvetica  
+}
+
+  
+a.toprowlink, a.toprowlink:link, a.toprowlink:visited, a.toprowlink:active          
+{ 
+	text-decoration: none; 
+	font-weight: bold; 
+	font-size: 9px; 
+	color: #ffffff; 
+	font-family: Verdana, Helvetica 
+}   
+
+
+a.toprowlink:hover        
+{ 
+	text-decoration: none; 
+	font-weight: bold; 
+	font-size: 9px; 
+	color: #cccccc; 
+	font-family: Verdana, Helvetica 
+} 
+
+input, textarea, select
+{
+	color : #ffffff;
+	background-color: #666666;
+	font-family : Verdana, Helvetica, E58C00, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+input
+{ 
+	text-indent : 2px; 
+}
+
+input[type="file"]
+{
+	color : black;
+}
+
+td.bodyline {
+	background-color: rgb(102, 102, 102);
+	border: 2px rgb(153, 153, 153) double;
+	height: 16px;
+}
+
+.mainmenu {
+	padding: 0px;
+	height: 16px;
+}
+
+.btnpush {
+	color: #FFFFFF;
+}
+
+
+
+
+
+#wrapfooter {
+	text-align: center;
+	clear: both;
+}
+
+#wrapnav {
+	width: 100%;
+	margin: 0;
+	background-color: #ECECEC;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #A9B8C2;
+}
+
+#logodesc {
+	background-color: #C1CAD2;
+	background-image: url('./images/background.gif');
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	padding: 0 25px 15px 25px;
+}
+
+#menubar {
+	margin: 0 25px;
+}
+
+#datebar {
+	margin: 10px 25px 0 25px;
+}
+
+#findbar {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.forumrules {
+	background-color: #F9CC79;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #BB9860;
+	padding: 4px;
+	font-weight: normal;
+	font-size: 1.1em;
+	font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+}
+
+.forumrules h3 {
+	color: red;
+}
+
+#pageheader { }
+#pagecontent { }
+#pagefooter { }
+
+#poll { }
+#postrow { }
+#postdata { }
+
+
+/*  Text
+ --------------------- */
+
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 1.5em;
+	text-decoration: none;
+	line-height: 120%;
+}
+
+h3 {
+	font-size: 1.3em;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 120%;
+}
+
+h4 {
+	margin: 0;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.rtl p.moderators {
+	float: right;
+}
+
+p.linkmcp {
+	margin: 0;
+	float: left;
+	white-space: nowrap;
+}
+
+.rtl p.linkmcp {
+	float: left;
+}
+
+p.datetime {
+	margin: 0;
+	float: right;
+	white-space: nowrap;
+	font-size: 1em;
+}
+
+.rtl p.datetime {
+	float: left;
+} 
+
+p.searchbarreg {
+	margin: 0;
+	float: right;
+	white-space: nowrap;
+}
+
+.rtl p.searchbarreg {
+	float: left;
+}
+
+p.forumdesc {
+	padding-bottom: 4px;
+}
+
+p.topicauthor {
+	margin: 1px 0;
+}
+
+p.topicdetails {
+	margin: 1px 0;
+}
+
+.postreported, .postreported a:link, .postreported a:visited, .postreported a:hover, .postreported a:active {
+	margin: 1px 0;
+	color: #f0ff00;
+	font-weight:bold;
+}
+
+.postapprove, .postapprove a:link, .postapprove a:visited, .postapprove a:hover, .postapprove a:active {
+	color: green;
+	font-weight:bold;
+}
+
+.postapprove img, .postreported img {
+	vertical-align: bottom;
+	padding-top: 5px;
+}
+
+.postauthor {
+	color: #FFFFFF;
+}
+
+.postdetails {
+	color: #FFFFFF;
+}
+
+.postbody {
+	line-height: 1.4em;
+	font-family: "Lucida Grande", "Trebuchet MS", Helvetica, Arial, sans-serif;
+}
+
+.postbody li, ol, ul {
+	margin: 0 0 0 1.5em;
+}
+
+.rtl .postbody li, .rtl ol, .rtl ul {
+	margin: 0 1.5em 0 0;
+}
+
+.posthilit {
+	color: yellow;
+}
+
+.nav {
+	margin: 0;
+	color: white;
+	font-weight: bold;
+}
+
+.pagination {
+	padding: 4px;
+	color: white;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.gen {
+	margin: 1px 1px;
+	font-size: 1.2em;
+}
+
+.genmed {
+	margin: 1px 1px;
+	font-size: 1.1em;
+}
+
+.gensmall {
+	margin: 1px 1px;
+	font-size: 1em;
+}
+
+.copyright {
+	color: white;
+	font-weight: normal;
+	font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+}
+
+.titles {
+	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 1.3em;
+	text-decoration: none;
+}
+
+.error {
+	color: red;
+}
+
+
+/* Tables
+ ------------ */
+td.profile {
+	padding: 4px;
+}
+
+.tablebg {
+	background-color: #A9B8C2;
+}
+
+.catdiv {
+	height: 28px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: white url('./images/cellpic2.jpg') repeat-y scroll top left;
+}
+.rtl .catdiv {
+	background: white url('./images/cellpic2_rtl.jpg') repeat-y scroll top right;
+}
+
+.cat {
+	height: 28px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: #C7D0D7;
+	background-image: url('./images/cellpic1.gif');
+	text-indent: 4px;
+}
+
+
+.row3 {
+	background-color: #C0C8D0;
+	padding: 4px;
+}
+
+.spacer {
+	background-color: #D1D7DC;
+}
+
+hr {
+	height: 1px;
+	border-width: 0;
+	background-color: #D1D7DC;
+	color: #D1D7DC;
+}
+
+.legend {
+	text-align:center;
+	margin: 0 auto;
+}
+
+/* Form Elements
+ ------------ */
+form {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+option {
+	padding: 0 1em 0 0;
+}
+
+option.disabled-option {
+	color: graytext;
+}
+
+.rtl option {
+	padding: 0 0 0 1em;
+}
+
+input.radio {
+	border: none;
+	background-color: transparent;
+}
+
+.post {
+	background-color: white;
+	color: black;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.btnbbcode {
+	color: #000000;
+	font-weight: normal;
+	font-size: 1.1em;
+	font-family: "Lucida Grande", Verdana, Helvetica, sans-serif;
+	background-color: #EFEFEF;
+	border: 1px solid #666666;
+}
+
+.btnmain {
+	font-weight: bold;
+	background-color: #ECECEC;
+	border: 1px solid #A9B8C2;
+	cursor: pointer;
+	padding: 1px 5px;
+	font-size: 1.1em;
+}
+
+.btnlite {
+	font-weight: normal;
+	background-color: #ECECEC;
+	border: 1px solid #A9B8C2;
+	cursor: pointer;
+	padding: 1px 5px;
+	font-size: 1.1em;
+}
+
+.btnfile {
+	font-weight: normal;
+	background-color: #ECECEC;
+	border: 1px solid #A9B8C2;
+	padding: 1px 5px;
+	font-size: 1.1em;
+}
+
+.helpline {
+	background-color: #EFEFEF;
+	border-style: none;
+	color: gray;
+}
+
+
+/* BBCode
+ ------------ */
+.quotetitle, .attachtitle {
+	margin: 10px 5px 0 5px;
+	padding: 4px;
+	border-width: 1px 1px 0 1px;
+	border-style: solid;
+	border-color: #CCCCCC;
+	color: #333333;
+	background-color: #CCCCCC;
+	font-size: 0.85em;
+	font-weight: bold;
+}
+
+.quotetitle .quotetitle {
+	font-size: 1em;
+}
+
+.quotecontent, .attachcontent {
+	margin: 0 5px 10px 5px;
+	padding: 5px;
+	border-color: #CCCCCC;
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	font-weight: normal;
+	font-size: 1em;
+	line-height: 1.4em;
+	font-family: "Lucida Grande", "Trebuchet MS", Helvetica, Arial, sans-serif;
+	background-color: #666666;
+	color: white;
+}
+
+.attachcontent {
+	font-size: 0.85em;
+}
+
+.codetitle {
+	margin: 10px 5px 0 5px;
+	padding: 2px 4px;
+	border-width: 1px 1px 0 1px;
+	border-style: solid;
+	border-color: #CCCCCC;
+	color: #333333;
+	background-color: #CCCCCC;
+	font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+	font-size: 0.8em;
+}
+
+.codecontent {
+	direction: ltr;
+	margin: 0 5px 10px 5px;
+	padding: 5px;
+	border-color: #CCCCCC;
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	font-weight: normal;
+	color: #00ff00;
+	font-size: 0.85em;
+	font-family: Monaco, 'Courier New', monospace;
+	background-color: #666666;
+}
+
+.syntaxbg {
+	color: #000000;
+}
+
+.syntaxcomment {
+	color: #FF8000;
+}
+
+.syntaxdefault {
+	color: #FFFFFF;
+}
+
+.syntaxhtml {
+	color: #000000;
+}
+
+.syntaxkeyword {
+	color: #00FF00;
+}
+
+.syntaxstring {
+	color: #f0ff00;
+}
+
+
+/* Private messages
+ ------------------ */
+.pm_marked_colour {
+	background-color: #000000 !important;
+}
+
+.pm_replied_colour {
+	background-color: #A9B8C2 !important;
+}
+
+.pm_friend_colour {
+	background-color: #007700 !important;
+}
+
+.pm_foe_colour {
+	background-color: #DD0000 !important;
+}
+
+
+/* Misc
+ ------------ */
+img {
+	border: none;
+}
+
+.sep {
+	color: black;
+	background-color: #FFA34F;
+}
+
+table.colortable td {
+	padding: 0;
+}
+
+pre {
+	font-size: 1.1em;
+	font-family: Monaco, 'Courier New', monospace;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.username-coloured {
+	font-weight: bold;
+}
+
+/* Front Page
+ ------------ */
+ 
+ .content h2 {
+	font-weight: normal;
+	border-bottom: 1px solid #CCCCCC;
+	font-size: 1.6em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	padding-bottom: 0.5em;
+}

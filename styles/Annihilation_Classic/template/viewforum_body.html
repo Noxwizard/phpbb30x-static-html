@@ -1,0 +1,188 @@
+<!-- INCLUDE overall_header.html -->
+
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+						<tr>
+							<td>
+								<!-- IF S_FORUM_RULES -->
+									<div class="forumrules">
+										<!-- IF U_FORUM_RULES -->
+											<h3>{L_FORUM_RULES}</h3><br />
+											<a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a>
+										<!-- ELSE -->
+											<h3>{L_FORUM_RULES}</h3><br />
+											{FORUM_RULES}
+										<!-- ENDIF -->
+									</div>
+
+									<br clear="all" />
+								<!-- ENDIF -->
+
+								<!-- IF S_HAS_SUBFORUM -->
+									<table cellpadding="4" cellspacing="1" border="0" width="100%"> 
+										<!-- INCLUDE forumlist_body.html -->
+									</table>
+								<!-- ENDIF -->
+
+								<!-- IF S_IS_POSTABLE or S_NO_READ_ACCESS -->
+									<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+										<tr> 
+											<td align="{S_CONTENT_FLOW_BEGIN}" valign="top" width="100%">
+												<!-- IF U_MCP -->
+													<a href="{U_MCP}">{L_MCP}</a><br />
+												<!-- ENDIF -->
+												<br />
+												<!-- IF MODERATORS -->
+													(Moderated by:<b><span class="smalltext"><!-- IF S_SINGLE_MODERATOR -->{L_MODERATOR}<!-- ELSE -->{L_MODERATORS}<!-- ENDIF -->: {MODERATORS}</span></b>)<br />
+												<!-- ENDIF -->
+												<br />
+												<!-- IF TOTAL_TOPICS -->
+													<!-- INCLUDE pagination.html -->&nbsp;
+												<!-- ENDIF -->
+												<!-- IF S_DISPLAY_ONLINE_LIST --><span class="smalltext"><b>{LOGGED_IN_USER_LIST}</b></span><br /><!-- ENDIF -->
+												<!-- IF S_WATCH_FORUM_LINK and not S_IS_BOT --><a href="{S_WATCH_FORUM_LINK}">{S_WATCH_FORUM_TITLE}</a><!-- ENDIF -->
+											</td>
+											<td valign="bottom" align="{S_CONTENT_FLOW_END}" nowrap>
+												<!-- IF S_DISPLAY_POST_INFO and not S_IS_BOT -->
+													<a href="{U_POST_NEW_TOPIC}">{POST_IMG}</a><br />
+												<!-- ENDIF -->
+												<!-- IF not S_IS_BOT and U_MARK_TOPICS --><span class="smalltext"><a href="{U_MARK_TOPICS}">{L_MARK_TOPICS_READ}</a></span><!-- ENDIF -->
+											</td>
+										</tr>
+									</table>
+								<!-- ENDIF -->
+
+								<!-- IF not S_DISPLAY_ACTIVE and (S_IS_POSTABLE or .topicrow) -->
+									<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center"> 
+										<tr> 
+											<td class="tableborder"> 
+												<!-- IF S_NO_READ_ACCESS -->
+													<span class="mediumtext">{L_NO_READ_ACCESS}</span>
+												<!-- ELSE -->
+												<table cellpadding="4" cellspacing="1" border="0" width="100%"> 
+
+													<!-- BEGIN topicrow -->
+													<!-- IF topicrow.S_TOPIC_TYPE_SWITCH eq 1 -->
+													<tr> 
+														<td align="center" nowrap colspan="2" class="toprow" valign="middle">&nbsp;{L_ANNOUNCEMENTS}&nbsp;</td> 
+														<td nowrap class="toprow" align="center" valign="middle"><span class="toprowtext">&nbsp;{L_AUTHOR}&nbsp;</span></td> 
+														<td nowrap class="toprow" align="center" valign="middle"><span class="toprowtext">&nbsp;{L_REPLIES}&nbsp;</span></td> 
+														<td nowrap class="toprow" align="center" valign="middle"><span class="toprowtext">&nbsp;{L_VIEWS}&nbsp;</span></td> 
+														<td nowrap class="toprow" align="center" valign="middle"><span class="toprowtext">&nbsp;{L_LAST_POST}&nbsp;</span></td> 
+													</tr> 
+													<!-- ELSEIF topicrow.S_TOPIC_TYPE_SWITCH eq 0 -->
+													<tr> 
+														<td align="center" nowrap colspan="2" class="toprow" valign="middle">&nbsp;{L_TOPICS}&nbsp;</td> 
+														<td nowrap class="toprow" align="center" valign="middle"><span class="toprowtext">&nbsp;{L_AUTHOR}&nbsp;</span></td> 
+														<td nowrap class="toprow" align="center" valign="middle"><span class="toprowtext">&nbsp;{L_REPLIES}&nbsp;</span></td> 
+														<td nowrap class="toprow" align="center" valign="middle"><span class="toprowtext">&nbsp;{L_VIEWS}&nbsp;</span></td> 
+														<td nowrap class="toprow" align="center" valign="middle"><span class="toprowtext">&nbsp;{L_LAST_POST}&nbsp;</span></td> 
+													</tr> 
+													<!-- ENDIF -->
+													<tr> 
+														<td class="row1" valign="middle" align="center">{topicrow.TOPIC_FOLDER_IMG}</td> 
+														<td align="left" class="row2" width="100%"><span class="smalltext">{topicrow.ATTACH_ICON_IMG} <!-- IF topicrow.S_HAS_POLL or topicrow.S_TOPIC_MOVED --><b>{topicrow.TOPIC_TYPE}</b> <!-- ENDIF --><a title="{L_POSTED}: {topicrow.FIRST_POST_TIME}" href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a></span>
+															<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED -->
+																<a href="{topicrow.U_MCP_QUEUE}">{topicrow.UNAPPROVED_IMG}</a>&nbsp;
+															<!-- ENDIF -->
+															<!-- IF topicrow.S_TOPIC_REPORTED -->
+																<a href="{topicrow.U_MCP_REPORT}">{REPORTED_IMG}</a>&nbsp;
+															<!-- ENDIF -->
+															<!-- IF topicrow.PAGINATION -->
+																<span class="smalltext"><br /> [ {GOTO_PAGE_IMG}{L_GOTO_PAGE}: {topicrow.PAGINATION} ]</span>
+															<!-- ENDIF -->
+														</td> 
+														<td class="row1c" nowrap><span class="smalltext">{topicrow.TOPIC_AUTHOR_FULL}</span></td> 
+														<td class="row2c" nowrap><span class="mediumtext">{topicrow.REPLIES}</span></td> 
+														<td class="row1c" nowrap><span class="mediumtext">{topicrow.VIEWS}</span></td> 
+														<td class="row2r" nowrap><span class="smalltext">{topicrow.LAST_POST_TIME}<br />{topicrow.LAST_POST_AUTHOR_FULL} <!-- IF not S_IS_BOT --><a href="{topicrow.U_LAST_POST}">{LAST_POST_IMG}</a><!-- ENDIF --></span></td> 
+													</tr>
+													<!-- BEGINELSE -->
+														<!-- IF S_IS_POSTABLE -->
+														<tr>
+															<td class="row1" colspan="6" height="30" align="center" valign="middle"><span class="mediumtext"><!-- IF not S_SORT_DAYS -->{L_NO_TOPICS}<!-- ELSE -->{L_NO_TOPICS_TIME_FRAME}<!-- ENDIF --></span></td>
+														</tr>
+														<!-- ENDIF -->
+													<!-- END topicrow -->
+
+												<!-- ENDIF -->
+												</table>
+											</td>
+										</tr>
+									</table>
+								<!-- ENDIF -->
+
+								<!-- IF S_DISPLAY_POST_INFO or TOTAL_TOPICS -->
+									<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center"> 
+										<tr>
+											<!-- IF S_DISPLAY_POST_INFO and not S_IS_BOT -->
+											<td align="{S_CONTENT_FLOW_BEGIN}" valign="top">
+												<!-- IF U_MARK_TOPICS --><span class="smalltext"><a href="{U_MARK_TOPICS}">{L_MARK_TOPICS_READ}</a></span><br /><!-- ENDIF -->
+												<a href="{U_POST_NEW_TOPIC}">{POST_IMG}</a>
+											</td>
+											<!-- ENDIF -->
+											<!-- IF TOTAL_TOPICS -->
+											<td align="{S_CONTENT_FLOW_END}">
+												<span class="smalltext">&nbsp;{PAGE_NUMBER}<br /></span>
+												<span class="smalltext"><!-- INCLUDE pagination.html --><br />{S_TIMEZONE}</span>
+											</td>
+											<!-- ENDIF -->
+										</tr>
+									</table>
+								<!-- ENDIF -->
+
+								<!-- IF S_DISPLAY_POST_INFO -->
+									<table cellpadding="2" cellspacing="0" border="0" width="100%" align="center"> 
+										<tr valign="bottom"> 
+											<td align="left"> 
+												<span class="smalltext"><b>{L_FORUM_PERMISSIONS}:<br></b></span> 
+												<table cellpadding="0" cellspacing="0" border="0" align="left"> 
+													<tr> 
+														<td class="tableborder"> 
+															<table cellpadding="4" cellspacing="1" border="0" align="left"> 
+																<tr>
+																	<td class="row1"><span class="smalltext"><!-- BEGIN rules -->{rules.RULE}<br /><!-- END rules --></span></td>
+																</tr> 
+															</table> 
+														</td> 
+													</tr> 
+												</table> 
+											</td> 
+											<td align="right" valign="top"><br> 
+												<table cellpadding="2" cellspacing="0" border="0" width="100%" align="center"> 
+													<tr> 
+														<td> 
+															<table border="0" cellspacing="2" cellpadding="2" align="center"> 
+																<tr> 
+																	<td nowrap>{FOLDER_UNREAD_IMG} {L_NEW_POSTS}</td> 
+																	<td nowrap>{FOLDER_HOT_UNREAD_IMG} {L_NEW_POSTS_HOT}</td> 
+																	<td nowrap>{FOLDER_LOCKED_UNREAD_IMG} {L_NEW_POSTS_LOCKED}</td>
+																</tr> 
+																<tr> 
+																	<td nowrap>{FOLDER_IMG} {L_NO_NEW_POSTS}</td> 
+																	<td nowrap>{FOLDER_HOT_IMG} {L_NO_NEW_POSTS_HOT}</td>
+																	<td nowrap>{FOLDER_LOCKED_IMG} {L_NO_NEW_POSTS_LOCKED}</td>
+																</tr>
+																<tr>
+																	<td nowrap>{FOLDER_ANNOUNCE_IMG} {L_ICON_ANNOUNCEMENT}</td>
+																	<td nowrap>{FOLDER_STICKY_IMG} {L_ICON_STICKY}</td>
+																	<td nowrap>{FOLDER_MOVED_IMG} {L_TOPIC_MOVED}</td>
+																</tr> 
+															</table> 
+														</td> 
+													</tr> 
+												</table> 
+											</td> 
+										</tr> 
+									</table>
+								<!-- ENDIF -->
+
+									<table width="100%" cellspacing="0">
+										<tr>
+											<td><!-- IF S_DISPLAY_SEARCHBOX --><!-- INCLUDE searchbox.html --><!-- ENDIF --></td>
+											<td align="{S_CONTENT_FLOW_END}"></td>
+										</tr>
+									</table>
+							</td>
+						</tr>
+					</table>
+<!-- INCLUDE overall_footer.html -->

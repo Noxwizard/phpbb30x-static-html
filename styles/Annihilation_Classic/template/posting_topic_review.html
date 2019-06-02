@@ -1,0 +1,101 @@
+<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+	<tr>
+		<td class="tableborder"> 
+			<table cellpadding="4" cellspacing="1" border="0" width="100%"> 
+				<tr>
+					<th align="center">{L_TOPIC_REVIEW} - {TOPIC_TITLE}</th>
+				</tr>
+				<tr>
+					<td class="row1"><div style="overflow: auto; width: 100%; height: 300px;">
+						<table width="100%" cellspacing="1">
+							<tr>
+								<td class="toprow">
+									<table width="100%" cellspacing="1">
+										<tr>
+											<td width="22%"><span class="toprowtext">{L_AUTHOR}</span></td>
+											<td><span class="toprowtext">{L_MESSAGE}</span></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td class="tableborder">
+									<table width="100%" border="0" cellspacing="1" cellpadding="4">
+										<!-- BEGIN topic_review_row -->
+										<tr>
+											<td valign="top" width="186" <!-- IF topic_review_row.S_ROW_COUNT is even -->class="row1"<!-- ELSE -->class="row2"<!-- ENDIF -->>
+												<!-- IF topic_review_row.S_IGNORE_POST -->
+													<td colspan="2">{topic_review_row.L_IGNORE_POST}</td>
+												<!-- ELSE -->
+
+														<span class="largetext"><b class="postauthor"<!-- IF topic_review_row.POST_AUTHOR_COLOUR --> style="color: {topic_review_row.POST_AUTHOR_COLOUR}"<!-- ENDIF -->>{topic_review_row.POST_AUTHOR}</b></span>
+													</td>
+
+													<td valign="top" class="<!-- IF topic_review_row.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->"> <span class="smalltext">
+														<table width="100%">
+															<tr>
+																<td align="left">             
+																	<b>{L_POST_SUBJECT}:</b>&nbsp;{topic_review_row.POST_SUBJECT}</span> 
+																</td>
+																<td align="right">
+																	<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE --><a href="#" onclick="addquote({topic_review_row.POST_ID},'{topic_review_row.POSTER_QUOTE}'); return false;">{QUOTE_IMG}</a><!-- ENDIF -->
+																</td>
+															</tr>
+														</table>
+														<p><span class="largetext">{topic_review_row.MESSAGE}</span>
+														<!-- IF postrow.S_HAS_ATTACHMENTS -->
+															<br clear="all" /><br />
+
+															<table width="100%" cellspacing="">
+																<tr>
+																	<td class="tableborder">
+																		<table width="100%" cellspacing="1">
+																			<tr>
+																				<td class="row3"><b class="mediumtext">{L_ATTACHMENTS}: </b></td>
+																			</tr>
+																		<!-- BEGIN attachment -->
+																			<tr>
+																				<!-- IF topic_review_row.attachment.S_ROW_COUNT is even --><td class="row2"><!-- ELSE --><td class="row1"><!-- ENDIF -->{topic_review_row.attachment.DISPLAY_ATTACHMENT}</td>
+																			</tr>
+																		<!-- END attachment -->
+																		</table>
+																		<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE -->
+																			<div id="message_{topic_review_row.POST_ID}" style="display: none;">{topic_review_row.DECODED_MESSAGE}</div>
+																		<!-- ENDIF -->
+																	</td>
+																</tr>
+															</table>
+														<!-- ENDIF -->
+
+															<table width="100%" cellspacing="0" style="border-style: solid; border-width: 1px 0px 0px 0px; border-top-color: #999999">
+															<tr>
+																<td>
+																	<table width="100%" cellspacing="0">
+																	<tr valign="middle">
+																		<td width="100%" align="{S_CONTENT_FLOW_BEGIN}"><span class="smalltext"><!-- IF topic_review_row.U_MCP_DETAILS -->[ <a href="{topic_review_row.U_MCP_DETAILS}">{L_POST_DETAILS}</a> ]<!-- ENDIF --></span></td>
+																		<td width="10" nowrap="nowrap"><!-- IF S_IS_BOT -->{topic_review_row.MINI_POST_IMG}<!-- ELSE --><a href="{topic_review_row.U_MINI_POST}">{topic_review_row.MINI_POST_IMG}</a><!-- ENDIF --></td>
+																		<td class="smalltext" nowrap="nowrap"><b>{L_POSTED}:</b> {topic_review_row.POST_DATE}</td>
+																	</tr>
+																	</table>
+																</td>
+															</tr>
+															</table>
+														</td>
+												<!-- ENDIF -->
+											</tr>
+											<tr>
+												<td colspan="2"><img src="images/spacer.gif" alt="" width="1" height="1" /></td>
+											</tr>
+										<!-- END topic_review_row -->
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<br clear="all" />

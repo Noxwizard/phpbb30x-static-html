@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}" xml:lang="{S_USER_LANG}">
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset={S_CONTENT_ENCODING}" />
+<meta http-equiv="content-language" content="{S_USER_LANG}" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+{META}
+<title>{SITENAME} &bull; <!-- IF S_IN_MCP -->{L_MCP} &bull; <!-- ELSEIF S_IN_UCP -->{L_UCP} &bull; <!-- ENDIF -->{PAGE_TITLE}</title>
+
+<!-- IF S_ENABLE_FEEDS -->
+	<!-- IF S_ENABLE_FEEDS_OVERALL --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {SITENAME}" href="{U_FEED}" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_NEWS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_NEWS}" href="{U_FEED}?mode=news" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_FORUMS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_ALL_FORUMS}" href="{U_FEED}?mode=forums" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_TOPICS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_TOPICS_NEW}" href="{U_FEED}?mode=topics" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_TOPICS_ACTIVE --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_TOPICS_ACTIVE}" href="{U_FEED}?mode=topics_active" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_FORUM and S_FORUM_ID --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FORUM} - {FORUM_NAME}" href="{U_FEED}?f={S_FORUM_ID}" /><!-- ENDIF -->
+	<!-- IF S_ENABLE_FEEDS_TOPIC and S_TOPIC_ID --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_TOPIC} - {TOPIC_TITLE}" href="{U_FEED}?f={S_FORUM_ID}&amp;t={S_TOPIC_ID}" /><!-- ENDIF -->
+<!-- ENDIF -->
+
+<link rel="stylesheet" href="{T_STYLESHEET_LINK}" type="text/css" />
+
+<script type="text/javascript">
+// <![CDATA[
+<!-- IF S_USER_PM_POPUP and S_NEW_PM -->
+		popup('{UA_POPUP_PM}', 400, 225, '_phpbbprivmsg');
+<!-- ENDIF -->
+
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes,width=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('{LA_JUMP_PAGE}:', '{ON_PAGE}');
+	var perpage = '{PER_PAGE}';
+	var base_url = '{A_BASE_URL}';
+
+	if (page !== null && !isNaN(page) && page == Math.floor(page) && page > 0)
+	{
+		if (base_url.indexOf('?') == -1)
+		{
+			document.location.href = base_url + '?start=' + ((page - 1) * per_page);
+		}
+		else
+		{
+			document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * per_page);
+		}
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+<!-- IF ._file -->
+
+	/**
+	* Play quicktime file by determining it's width/height
+	* from the displayed rectangle area
+	*
+	* Only defined if there is a file block present.
+	*/
+	function play_qt_file(obj)
+	{
+		var rectangle = obj.GetRectangle();
+
+		if (rectangle)
+		{
+			rectangle = rectangle.split(',')
+			var x1 = parseInt(rectangle[0]);
+			var x2 = parseInt(rectangle[2]);
+			var y1 = parseInt(rectangle[1]);
+			var y2 = parseInt(rectangle[3]);
+
+			var width = (x1 < 0) ? (x1 * -1) + x2 : x2 - x1;
+			var height = (y1 < 0) ? (y1 * -1) + y2 : y2 - y1;
+		}
+		else
+		{
+			var width = 200;
+			var height = 0;
+		}
+
+		obj.width = width;
+		obj.height = height + 16;
+
+		obj.SetControllerVisible(true);
+
+		obj.Play();
+	}
+<!-- ENDIF -->
+
+// ]]>
+
+<!-- hide scripts from older browsers
+if (document.images)
+{
+	link_graphic = new Image
+	link_graphic.src = "{T_THEME_PATH}/images/gray.gif"
+	link_over = new Image
+	link_over.src = "{T_THEME_PATH}/images/arrow_10px.gif"
+	document.forum = "{T_THEME_PATH}/images/arrow_10px.gif"
+}
+else
+{
+	link_graphic = ""
+	link_over = ""
+	document.main = ""
+	document.forum = "{T_THEME_PATH}/images/arrow_10px.gif"
+	document.about = ""
+	document.faq = ""
+	document.downloads = ""
+	document.guide = ""
+	document.links = ""
+	document.stats = ""
+	document.catalog = ""
+	document.tutorials = ""
+	document.gallery = ""
+	document.counter = ""
+	document.option = ""
+	document.zerovoid = ""
+}
+// end hiding script from old broswers -->
+</script>
+
+<script type="text/javascript" src="styles/syntaxhighlighter/src/shCore.js"></script>
+<script type="text/javascript" src="styles/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="styles/syntaxhighlighter/scripts/shBrushTribes.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="styles/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'styles/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+<body class="{S_CONTENT_DIRECTION}">
+
+<a name="top"></a>
+
+<table border="0" cellspacing="0" cellpadding="0" height="100%" width="100%">
+		<tr>
+		<td colspan="3" width="100%" valign="top">
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<td background="{T_THEME_PATH}/images/top_bg2.gif" valign="top" align="left">&nbsp;</td>
+					<td width="750" valign="top" align="left">
+						<img src="{T_THEME_PATH}/images/header.png" width="760" height=140" />
+						<!--
+						<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="760" height="140">
+							<param name="movie" value="{T_THEME_PATH}/images/header.swf" />
+							<param name="quality" value="high" />
+							<param name="menu" value="false" />
+							<embed src="{T_THEME_PATH}/images/header.swf" quality="high" pluginspage="http://get.adobe.com/flashplayer/" type="application/x-shockwave-flash" width="760" height="140" />
+						</object>
+						-->
+					</td>
+		</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td height="100%" width="100%" valign="top" align="center">
+			<table width="98%" border="0" cellspacing="0" cellpadding="0"> 
+				<tr> 
+					<td valign="top" bgcolor="#666666" colspan="1" width="100%">
+						<table border="0" cellspacing="0" cellpadding="0" width="100%">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="bodyline" width="100%"> 
+									<table width="100%" cellspacing="0" cellpadding="0" border="0"> 
+										<tr> 
+											<td align="center" width="100%" valign="middle"> 
+												<table class="menuline" width="100%" cellpadding="2" cellspacing="0" border="0"> 
+													<tr> 
+														<td class="mainmenu" align="center" width="12.5%" style="cursor:hand" onMouseover="this.style.backgroundColor='#777777'" onMouseout="this.style.backgroundColor=''" onClick="window.location.href='{U_FAQ}'"><a class="mainmenu">{L_FAQ}</a></td>
+														<td class="mainmenu" align="center" width="12.5%" style="cursor:hand" onMouseover="this.style.backgroundColor='#777777'" onMouseout="this.style.backgroundColor=''"><a class="mainmenu">{L_SEARCH}</a></td> 
+														<td class="mainmenu" align="center" width="12.5%" style="cursor:hand" onMouseover="this.style.backgroundColor='#777777'" onMouseout="this.style.backgroundColor=''"><a class="mainmenu">{L_MEMBERLIST}</a></td>
+														<!-- IF not S_IS_BOT --><!-- IF S_USER_LOGGED_IN --><td class="mainmenu" align="center" width="12.5%" style="cursor:hand" onMouseover="this.style.backgroundColor='#777777'" onMouseout="this.style.backgroundColor=''" onClick="window.location.href='{U_PROFILE}'"><a href="{U_PROFILE}" class="mainmenu">{L_PROFILE}</a></td> <!-- ENDIF --><!-- ENDIF -->
+														<!-- IF S_DISPLAY_PM --><td class="mainmenu" align="center" width="12.5%" style="cursor:hand" onMouseover="this.style.backgroundColor='#777777'" onMouseout="this.style.backgroundColor=''" onClick="window.location.href='{U_PRIVATEMSGS}'"><a href="{U_PRIVATEMSGS}" class="mainmenu">{PRIVATE_MESSAGE_INFO}<!-- IF PRIVATE_MESSAGE_INFO_UNREAD -->, {PRIVATE_MESSAGE_INFO_UNREAD}<!-- ENDIF --></a></td><!-- ENDIF -->
+														<!-- IF not S_IS_BOT --><!-- IF not S_USER_LOGGED_IN --><!-- IF S_REGISTER_ENABLED --><td class="mainmenu" align="center" width="12.5%" style="cursor:hand" onMouseover="this.style.backgroundColor='#777777'" onMouseout="this.style.backgroundColor=''"><a class="mainmenu">{L_REGISTER}</a></td><!-- ENDIF --><!-- ENDIF --><!-- ENDIF -->
+														<!-- IF not S_IS_BOT --><td class="mainmenu" align="center" width="12.5%" style="cursor:hand" onMouseover="this.style.backgroundColor='#777777'" onMouseout="this.style.backgroundColor=''"><a class="mainmenu">{L_LOGIN_LOGOUT}</a></td><!-- ENDIF --> 
+														<!-- IF U_RESTORE_PERMISSIONS --><td class="mainmenu" align="center" width="12.5%" style="cursor:hand" onMouseover="this.style.backgroundColor='#777777'" onMouseout="this.style.backgroundColor=''" onClick="window.location.href='{U_RESTORE_PERMISSIONS}'"><a href="{U_RESTORE_PERMISSIONS}" class="mainmenu">{L_RESTORE_PERMISSIONS}</a></td><!-- ENDIF --> 
+													</tr> 
+												</table> 
+											</td>
+										</tr> 
+									</table> 
+								</td>
+							</tr>
+						</table>
+						<table width="100%" border="0" cellspacing="2" cellpadding="2" align="center"> 
+							<tr>
+								<td align="left" width="50%" valign="top">
+									<span class="smalltext"><!-- INCLUDE breadcrumbs.html --><br />{CURRENT_TIME}<br /><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ENDIF --></span> 
+								</td> 
+								<td align="right" width="50%" valign="top">
+									<span class="smalltext"><!-- IF TOTAL_POSTS -->{TOTAL_POSTS}<!-- ENDIF --> <!-- IF TOTAL_TOPICS and TOTAL_TOPICS and TOTAL_USERS -->| <!-- ENDIF --><!-- IF TOTAL_TOPICS -->{TOTAL_TOPICS}<!-- ENDIF --><!-- IF TOTAL_TOPICS and TOTAL_USERS --> | <!-- ENDIF --><!-- IF TOTAL_USERS -->{TOTAL_USERS}<!-- ENDIF --></span>
+								</td> 
+							</tr>
+							<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN -->
+							<tr>
+								<td colspan="2">
+									<p><span style="color: red;">{L_BOARD_DISABLED}</span></p>
+								</td>
+							</tr>
+							<!-- ENDIF -->
+						</table> 

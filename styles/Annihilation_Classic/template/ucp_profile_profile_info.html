@@ -1,0 +1,78 @@
+<!-- INCLUDE ucp_header.html -->
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+	<tr>
+		<td class="tableborder"> 
+			<table cellpadding="4" cellspacing="1" border="0" width="100%"> 
+				<tr>
+					<th colspan="2" valign="middle">{L_TITLE}</th>
+				</tr>
+				<!-- IF ERROR -->
+					<tr>
+						<td class="row2" colspan="2" align="center"><span class="smalltext error">{ERROR}</span></td>
+					</tr>
+				<!-- ENDIF -->
+				<tr> 
+					<td class="row1" colspan="2" align="{S_CONTENT_FLOW_BEGIN}"><span class="smalltext">{L_PROFILE_INFO_NOTICE}</span></td>
+				</tr>
+				<tr> 
+					<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}"><b class="mediumtext">{L_UCP_ICQ}: </b></td>
+					<td class="row2" align="{S_CONTENT_FLOW_BEGIN}"><input class="post" type="text" name="icq" size="30" maxlength="15" value="{ICQ}" /></td>
+				</tr>
+				<tr> 
+					<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}"><b class="mediumtext">{L_UCP_AIM}: </b></td>
+					<td class="row2" align="{S_CONTENT_FLOW_BEGIN}"><input class="post" type="text" name="aim" size="30" maxlength="255" value="{AIM}" /></td>
+				</tr>
+				<tr> 
+					<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}"><b class="mediumtext">{L_UCP_MSNM}: </b></td>
+					<td class="row2" align="{S_CONTENT_FLOW_BEGIN}"><input class="post" type="text" name="msn" size="30" maxlength="255" value="{MSN}" /></td>
+				</tr>
+				<tr> 
+					<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}"><b class="mediumtext">{L_UCP_YIM}: </b></td>
+					<td class="row2" align="{S_CONTENT_FLOW_BEGIN}"><input class="post" type="text" name="yim" size="30" maxlength="255" value="{YIM}" /></td>
+				</tr>
+				<tr> 
+					<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}"><b class="mediumtext">{L_UCP_JABBER}: </b></td>
+					<td class="row2" align="{S_CONTENT_FLOW_BEGIN}"><input class="post" type="text" name="jabber" size="30" maxlength="255" value="{JABBER}" /></td>
+				</tr>
+				<tr> 
+					<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}"><b class="mediumtext">{L_WEBSITE}: </b></td>
+					<td class="row2" align="{S_CONTENT_FLOW_BEGIN}"><input class="post" type="text" name="website" size="30" maxlength="255" value="{WEBSITE}" /></td>
+				</tr>
+				<tr> 
+					<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}"><b class="mediumtext">{L_LOCATION}: </b></td>
+					<td class="row2" align="{S_CONTENT_FLOW_BEGIN}"><input class="post" type="text" name="location" size="30" maxlength="100" value="{LOCATION}" /></td>
+				</tr>
+				<tr> 
+					<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}"><b class="mediumtext">{L_OCCUPATION}: </b></td>
+					<td class="row2" align="{S_CONTENT_FLOW_BEGIN}"><textarea class="post" name="occupation" rows="3" cols="30">{OCCUPATION}</textarea></td>
+				</tr>
+				<tr> 
+					<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}"><b class="mediumtext">{L_INTERESTS}: </b></td>
+					<td class="row2" align="{S_CONTENT_FLOW_BEGIN}"><textarea class="post" name="interests" rows="3" cols="30">{INTERESTS}</textarea></td>
+				</tr>
+				<!-- IF S_BIRTHDAYS_ENABLED -->
+					<tr> 
+						<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}"><b class="mediumtext">{L_BIRTHDAY}: </b><br /><span class="smalltext">{L_BIRTHDAY_EXPLAIN}</span></td>
+						<td class="row2" align="{S_CONTENT_FLOW_BEGIN}"><span class="mediumtext">{L_DAY}:</span> <select class="btnpush" name="bday_day">{S_BIRTHDAY_DAY_OPTIONS}</select> <span class="mediumtext">{L_MONTH}:</span> <select class="btnpush" name="bday_month">{S_BIRTHDAY_MONTH_OPTIONS}</select> <span class="mediumtext">{L_YEAR}:</span> <select class="btnpush" name="bday_year">{S_BIRTHDAY_YEAR_OPTIONS}</select></td>
+					</tr>
+				<!-- ENDIF -->
+				<!-- BEGIN profile_fields -->
+					<tr> 
+						<td class="row1" width="35%" align="{S_CONTENT_FLOW_BEGIN}">
+							<b class="mediumtext">{profile_fields.LANG_NAME}: </b>
+							<!-- IF profile_fields.S_REQUIRED --><b>*</b><!-- ENDIF -->
+							<!-- IF profile_fields.LANG_EXPLAIN --><br /><span class="smalltext">{profile_fields.LANG_EXPLAIN}</span><!-- ENDIF -->
+						</td>
+						<td class="row2" align="{S_CONTENT_FLOW_BEGIN}">{profile_fields.FIELD}<!-- IF profile_fields.ERROR --><br /><span class="smalltext error">{profile_fields.ERROR}</span><!-- ENDIF --></td>
+					</tr>
+				<!-- END profile_fields -->
+				<tr>
+					<td class="catrow" colspan="2" align="center">{S_HIDDEN_FIELDS}<input class="btnpush" type="submit" name="submit" value="{L_SUBMIT}" />&nbsp;&nbsp;<input class="btnpush" type="reset" value="{L_RESET}" name="reset" /></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<!-- INCLUDE ucp_footer.html -->

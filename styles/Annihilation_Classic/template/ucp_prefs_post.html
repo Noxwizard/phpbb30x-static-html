@@ -1,0 +1,39 @@
+<!-- INCLUDE ucp_header.html -->
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+	<tr>
+		<td class="tableborder"> 
+			<table cellpadding="4" cellspacing="1" border="0" width="100%"> 
+				<tr>
+					<th colspan="2" valign="middle">{L_TITLE}</th>
+				</tr>
+				<!-- IF ERROR -->
+					<tr>
+						<td class="row2" colspan="2" align="center"><span class="smalltext error">{ERROR}</span></td>
+					</tr>
+				<!-- ENDIF -->
+				<tr>
+					<td class="row1" width="50%"><b class="mediumtext">{L_DEFAULT_BBCODE}:</b></td>
+					<td class="row2"><input type="radio" class="radio" name="bbcode" value="1"<!-- IF S_BBCODE --> checked="checked"<!-- ENDIF --> /><span class="mediumtext">{L_YES}</span>&nbsp; &nbsp;<input type="radio" class="radio" name="bbcode" value="0"<!-- IF not S_BBCODE --> checked="checked"<!-- ENDIF --> /><span class="mediumtext">{L_NO}</span></td>
+				</tr>
+				<tr>
+					<td class="row1" width="50%"><b class="mediumtext">{L_DEFAULT_SMILIES}:</b></td>
+					<td class="row2"><input type="radio" class="radio" name="smilies" value="1"<!-- IF S_SMILIES --> checked="checked"<!-- ENDIF --> /><span class="mediumtext">{L_YES}</span>&nbsp; &nbsp;<input type="radio" class="radio" name="smilies" value="0"<!-- IF not S_SMILIES --> checked="checked"<!-- ENDIF --> /><span class="mediumtext">{L_NO}</span></td>
+				</tr>
+				<tr>
+					<td class="row1" width="50%"><b class="mediumtext">{L_DEFAULT_ADD_SIG}:</b></td>
+					<td class="row2"><input type="radio" class="radio" name="sig" value="1"<!-- IF S_SIG --> checked="checked"<!-- ENDIF --> /><span class="mediumtext">{L_YES}</span>&nbsp; &nbsp;<input type="radio" class="radio" name="sig" value="0"<!-- IF not S_SIG --> checked="checked"<!-- ENDIF --> /><span class="mediumtext">{L_NO}</span></td>
+				</tr>
+				<tr>
+					<td class="row1" width="50%"><b class="mediumtext">{L_DEFAULT_NOTIFY}:</b></td>
+					<td class="row2"><input type="radio" class="radio" name="notify" value="1"<!-- IF S_NOTIFY --> checked="checked"<!-- ENDIF --> /><span class="mediumtext">{L_YES}</span>&nbsp; &nbsp;<input type="radio" class="radio" name="notify" value="0"<!-- IF not S_NOTIFY --> checked="checked"<!-- ENDIF --> /><span class="mediumtext">{L_NO}</span></td>
+				</tr>
+				<tr>
+					<td class="catrow" colspan="2" align="center">{S_HIDDEN_FIELDS}<input class="btnpush" type="submit" name="submit" value="{L_SUBMIT}" />&nbsp;&nbsp;<input class="btnpush" type="reset" value="{L_RESET}" name="reset" /></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<!-- INCLUDE ucp_footer.html -->

@@ -1,0 +1,255 @@
+<!-- INCLUDE overall_header.html -->
+
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+						<tr>
+							<td>
+							<!-- IF S_FORUM_RULES -->
+								<div class="forumrules">
+									<!-- IF U_FORUM_RULES -->
+										<h3>{L_FORUM_RULES}</h3><br />
+										<a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a>
+									<!-- ELSE -->
+										<h3>{L_FORUM_RULES}</h3><br />
+										{FORUM_RULES}
+									<!-- ENDIF -->
+								</div>
+
+								<br clear="all" />
+							<!-- ENDIF -->
+								<table cellpadding="2" cellspacing="0" border="0" width="100%"  align="center">
+								  <tr> 
+									<td valign="top" align="left"><a href="{U_VIEW_TOPIC}">{TOPIC_TITLE}</a>
+										<br />
+										<!-- IF MODERATORS -->
+											<span class="smalltext"><!-- IF S_SINGLE_MODERATOR -->{L_MODERATOR}<!-- ELSE -->{L_MODERATORS}<!-- ENDIF -->: {MODERATORS}</span>
+										<!-- ENDIF -->
+										<!-- IF U_MCP -->
+											<span class="smalltext"><a href="{U_MCP}">{L_MCP}</a></span>
+										<!-- ENDIF -->
+									  <span class="smalltext"><!-- INCLUDE pagination.html --><br /></span>
+									</td>
+								  </tr>
+								</table>
+								<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+									<tr>
+										<td class="tableborder"> 
+											<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<!-- IF S_HAS_POLL -->
+												<tr>
+													<td colspan="3" class="row1">
+															<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+																<tr>
+																	<td class="tableborder">				
+																		<table cellspacing="1" cellpadding="4" border="0" align="center" width="100%">
+																			<tr>
+																				<td align="center" class="catrow"><span class="catrowtext"><b>{POLL_QUESTION}</b></span><br /><span class="smalltext">{L_POLL_LENGTH}</span></td>
+																			</tr>
+																			<tr>
+																				<td class="row1">
+																					<table cellspacing="0" cellpadding="2" border="0" align="center">
+																					<!-- BEGIN poll_option -->
+																						<tr>
+																							<td><span class="smalltext">{poll_option.POLL_OPTION_CAPTION}</span></td>
+																						<!-- IF S_DISPLAY_RESULTS -->
+																							<td dir="ltr">{POLL_LEFT_CAP_IMG}{poll_option.POLL_OPTION_IMG}{POLL_RIGHT_CAP_IMG}</td>
+																							<td class="gen" align="{S_CONTENT_FLOW_END}"><b>&nbsp;{poll_option.POLL_OPTION_PERCENT}&nbsp;</b></td>
+																							<td class="gen" align="center">[ {poll_option.POLL_OPTION_RESULT} ]</td>
+																						<!-- ENDIF -->
+																					</tr>
+																				<!-- END poll_option -->
+																					</table>
+																				</td>
+																			</tr>
+																		<!-- IF S_DISPLAY_RESULTS -->
+																			<tr>
+																				<td class="row1 poll" colspan="4" align="center"><span class="smalltext"><b>{L_TOTAL_VOTES} : {TOTAL_VOTES}</b></span></td>
+																			</tr>
+																		<!-- ENDIF -->
+																		</table>
+																	</td>
+																</tr>
+											</table>
+										</td>
+									</tr>
+								<!-- ENDIF -->
+										<tr>
+											  <td class="toprow"> <span class="toprowtext"> </span> 
+												<table width="100%" border="0" cellspacing="0" cellpadding="2">
+												  <tr> 
+													<td width="186"><span class="toprowtext">&nbsp;{L_AUTHOR}</span></td>
+													<td><span class="toprowtext">&nbsp;{L_MESSAGE}</span></td>
+													<td align="right">
+													</td>
+												</tr>
+												</table>
+											</td>
+										</tr>
+											<!-- BEGIN postrow -->
+										<tr>
+											<td class="tableborder" > 
+												<table width="100%" border="0" cellspacing="1" cellpadding="4">
+													<tr>
+														<!-- IF postrow.S_IGNORE_POST -->
+														<td class="smalltext" colspan="2" height="25" align="center"><!-- IF postrow.S_FIRST_UNREAD --><a name="unread"></a><!-- ENDIF --><a name="p{postrow.POST_ID}"></a>{postrow.L_IGNORE_POST}</td>
+														<!-- ELSE -->
+														<td width="186" align="{S_CONTENT_FLOW_BEGIN}" valign="top" class="<!-- IF postrow.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->">
+															<!-- IF postrow.S_FIRST_UNREAD --><a name="unread"></a><!-- ENDIF --><a name="p{postrow.POST_ID}"></a>
+															<span class="largetext">
+															<b<!-- IF postrow.POST_AUTHOR_COLOUR --> style="color: {postrow.POST_AUTHOR_COLOUR}"<!-- ENDIF -->>{postrow.POST_AUTHOR}</b></span><br />
+															<span class="smalltext">
+																<!-- IF postrow.RANK_TITLE -->{postrow.RANK_TITLE}<br /><!-- ENDIF -->
+																<!-- IF postrow.RANK_IMG -->{postrow.RANK_IMG}<br /><!-- ENDIF -->
+																<!-- IF postrow.POSTER_AVATAR -->{postrow.POSTER_AVATAR}<!-- ENDIF --><br />
+																<!-- IF postrow.POSTER_JOINED --><br /><b>{L_JOINED}:</b> {postrow.POSTER_JOINED}<!-- ENDIF -->
+																<!-- IF postrow.POSTER_POSTS != '' --><br /><b>{L_POSTS}:</b> {postrow.POSTER_POSTS}<!-- ENDIF -->
+																<!-- IF postrow.POSTER_FROM --><br /><b>{L_LOCATION}:</b> {postrow.POSTER_FROM}<!-- ENDIF -->.
+
+																<!-- IF postrow.S_PROFILE_FIELD1 -->
+																<!-- Use a construct like this to include admin defined profile fields. Replace FIELD1 with the name of your field. -->
+																	<br /><b>{postrow.PROFILE_FIELD1_NAME}:</b> {postrow.PROFILE_FIELD1_VALUE}
+																<!-- ENDIF -->
+
+																<!-- BEGIN custom_fields -->
+																	<br /><b>{postrow.custom_fields.PROFILE_FIELD_NAME}:</b> {postrow.custom_fields.PROFILE_FIELD_VALUE}
+																<!-- END custom_fields -->
+															</span>
+														</td>
+														<td align="{S_CONTENT_FLOW_BEGIN}" valign="top" class="<!-- IF postrow.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->"> 
+															<table width="100%">
+																<tr>
+																	<td align="left">             
+																		<span class="smalltext"><b>{postrow.POST_SUBJECT}</b></span> 
+																	</td>
+																	<td align="right">
+																	<!-- IF not S_IS_BOT -->
+																		<!-- IF postrow.U_EDIT --><a href="{postrow.U_EDIT}">{EDIT_IMG}</a> <!-- ENDIF --> 
+																		<!-- IF postrow.U_QUOTE --><a href="{postrow.U_QUOTE}">{QUOTE_IMG}</a> <!-- ENDIF --> 
+																		<!-- IF postrow.U_DELETE --><a href="{postrow.U_DELETE}">{DELETE_IMG}</a> <!-- ENDIF --> 
+																		<!-- IF postrow.U_INFO --><a href="{postrow.U_INFO}">{INFO_IMG}</a> <!-- ENDIF --> 
+																		<!-- IF postrow.U_REPORT --><a href="{postrow.U_REPORT}">{REPORT_IMG}</a> <!-- ENDIF --> 
+																		<!-- IF postrow.U_WARN --><a href="{postrow.U_WARN}">{WARN_IMG}</a> <!-- ENDIF --> 
+																	<!-- ENDIF -->
+																	</td>
+																</tr>
+															</table>
+														<!-- IF postrow.S_POST_UNAPPROVED or postrow.S_POST_REPORTED -->
+															<table width="100%" cellspacing="0">
+																<tr>
+																	<td class="tableborder"><!-- IF postrow.S_POST_UNAPPROVED --><span class="postapprove">{UNAPPROVED_IMG} <a href="{postrow.U_MCP_APPROVE}">{L_POST_UNAPPROVED}</a></span><br /> <!-- ENDIF --> <!-- IF postrow.S_POST_REPORTED --><span class="postreported">{REPORTED_IMG} <a href="{postrow.U_MCP_REPORT}">{L_POST_REPORTED}</a></span><!-- ENDIF --></td>
+																</tr>
+																</table>
+
+																<br clear="all" />
+														<!-- ENDIF -->
+														  <p><span class="largetext">{postrow.MESSAGE}</span>
+														<!-- IF postrow.S_HAS_ATTACHMENTS -->
+															<br clear="all" /><br />
+
+																<table width="100%" cellspacing="">
+																	<tr>
+																		<td class="tableborder">
+																			<table width="100%" cellspacing="1">
+																				<tr>
+																					<td class="row1"><b class="mediumtext">{L_ATTACHMENTS}: </b></td>
+																				</tr>
+																				<!-- BEGIN attachment -->
+																					<tr>
+																						<!-- IF postrow.attachment.S_ROW_COUNT is even --><td class="row2"><!-- ELSE --><td class="row1"><!-- ENDIF -->{postrow.attachment.DISPLAY_ATTACHMENT}</td>
+																					</tr>
+																				<!-- END attachment -->
+																			</table>
+																		</td>
+																	</tr>
+																</table>
+															<!-- ENDIF -->
+															<!-- IF postrow.S_DISPLAY_NOTICE -->
+																<span class="smalltext"><br /><br />{L_DOWNLOAD_NOTICE}</span>
+															<!-- ENDIF -->
+															<!-- IF postrow.SIGNATURE -->
+																<span class="largetext"><br />_________________<br />{postrow.SIGNATURE}</span>
+															<!-- ENDIF -->
+															<!-- IF postrow.EDITED_MESSAGE or postrow.EDIT_REASON -->
+																<!-- IF postrow.EDIT_REASON -->
+																	<br /><br />
+																		<table width="100%" cellspacing="1">
+																	<tr>
+																		<td class="row2"><span class="smalltext">{postrow.EDITED_MESSAGE}</span></td>
+																	</tr>
+																	<tr>
+																		<td class="row2"><span class="smalltext"><hr />{postrow.EDIT_REASON}</span></td>
+																	</tr>
+																	</table>
+																<!-- ELSE -->
+																	<br /><br />
+																	<span class="smalltext">{postrow.EDITED_MESSAGE}</span>
+																<!-- ENDIF -->
+															<!-- ENDIF -->
+															<!-- IF postrow.BUMPED_MESSAGE -->
+																<span class="smalltext">{postrow.BUMPED_MESSAGE}</span>
+															<!-- ENDIF -->
+														  </p>
+														</td>
+													<!-- ENDIF -->
+												  </tr>
+												  <tr> 
+													<td width="186" height="16" nowrap class="<!-- IF postrow.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->"><!-- IF postrow.POST_ICON_IMG --><img src="{T_ICONS_PATH}{postrow.POST_ICON_IMG}" width="{postrow.POST_ICON_IMG_WIDTH}" height="{postrow.POST_ICON_IMG_HEIGHT}" alt="" title="" />&nbsp;<!-- ENDIF -->
+														<span class="smalltext"><!-- IF S_IS_BOT -->{postrow.MINI_POST_IMG}<!-- ELSE --><a href="{postrow.U_MINI_POST}">{postrow.MINI_POST_IMG}</a><!-- ENDIF -->{postrow.POST_DATE}&nbsp;</span>
+													</td>
+													<td valign="middle" class="<!-- IF postrow.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->">
+														<div style="float: left">
+														<!-- IF postrow.U_POST_AUTHOR --><a href="{postrow.U_POST_AUTHOR}">{PROFILE_IMG}</a> <!-- ENDIF --> 
+														<!-- IF postrow.U_PM --><a href="{postrow.U_PM}">{PM_IMG}</a> <!-- ENDIF --> 
+														<!-- IF postrow.U_EMAIL --><a href="{postrow.U_EMAIL}">{EMAIL_IMG}</a> <!-- ENDIF --> 
+														<!-- IF postrow.U_WWW --><a href="{postrow.U_WWW}" title="{L_VISIT_WEBSITE}: {postrow.U_WWW}">{WWW_IMG}</a> <!-- ENDIF -->
+														<!-- IF postrow.U_AIM --><a href="{postrow.U_AIM}" onclick="popup(this.href, 550, 320); return false;" title="{L_AIM}">{AIM_IMG}</a> <!-- ENDIF -->
+														<!-- IF postrow.U_YIM --><a href="{postrow.U_YIM}" onclick="popup(this.href, 780, 550); return false;" title="{L_YIM}">{YIM_IMG}</a> <!-- ENDIF -->
+														<!-- IF postrow.U_MSN --><a href="{postrow.U_MSN}" onclick="popup(this.href, 550, 320); return false;" title="{L_MSN}">{MSN_IMG}</a> <!-- ENDIF -->
+														<!-- IF postrow.U_ICQ --><a href="{postrow.U_ICQ}" onclick="popup(this.href, 550, 320); return false;" title="{L_ICQ}">{ICQ_IMG}</a> <!-- ENDIF -->
+														<!-- IF postrow.U_JABBER --><a href="{postrow.U_JABBER}" onclick="popup(this.href, 550, 320); return false;" title="{L_JABBER}">{JABBER_IMG}</a> <!-- ENDIF -->
+														</div>
+														<div style="float: right;"><a href="#top" class="yellowlink">{L_BACK_TO_TOP}</a></div>
+													</td>
+												  </tr>
+												</table>
+												<!-- END postrow -->
+											</td>
+										</tr>
+									  </table>
+
+										<table cellpadding="2" cellspacing="0" border="0" width="100%"  align="center">
+											<tr valign="top"> 
+											  <td align="left">
+											  </td>
+											  <td align="right"><span class="smalltext"><!-- INCLUDE pagination.html --><br>
+												<br>
+											  </span><span class="smalltext">&lt;&nbsp; <a href="{U_VIEW_OLDER_TOPIC}">{L_VIEW_PREVIOUS_TOPIC}</a><!-- IF U_VIEW_UNREAD_POST and not S_IS_BOT --> | <a href="{U_VIEW_UNREAD_POST}">{L_VIEW_UNREAD_POST}</a><!-- ENDIF --> | <a href="{U_VIEW_NEWER_TOPIC}">{L_VIEW_NEXT_TOPIC}</a>&nbsp;&gt; </span></td>
+											</tr>
+										</table>
+										  <br>
+										  <table cellpadding="2" cellspacing="0" border="0" width="100%"  align="center">
+											<tr valign="bottom">
+												<td align="left">
+													<table cellpadding="0" cellspacing="0" border="0" align="left">
+													  <tr>
+														<td class="tableborder"> 
+														  <table cellpadding="4" cellspacing="1" border="0" align="left">
+															<tr> 
+															  <td class="row2"><span class="smalltext"><!-- BEGIN rules -->{rules.RULE}<br /><!-- END rules --></span></td>
+															</tr>
+														   </table>
+														</td>
+													  </tr>
+													</table>
+												</td>
+												<td align="right">
+												</td>
+											</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+
+<!-- INCLUDE overall_footer.html -->

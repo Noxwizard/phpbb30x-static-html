@@ -1,0 +1,134 @@
+<!-- INCLUDE ucp_header.html -->
+
+<div id="pagecontent">
+
+<!-- INCLUDE ucp_pm_message_header.html -->
+<div style="padding: 2px;"></div>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+	<tr>
+		<td class="tableborder"> 
+			<table cellpadding="4" cellspacing="1" border="0" width="100%"> 
+
+				<tr>
+					<td class="row1" nowrap="nowrap" width="150"><span class="mediumtext"><b>{L_PM_SUBJECT}:</b></span></td>
+					<td class="row1"><span class="mediumtext">{SUBJECT}</span></td>
+				</tr>
+
+				<tr>
+					<td class="row1" nowrap="nowrap" width="150"><span class="mediumtext"><b>{L_PM_FROM}:</b></span></td>
+					<td class="row1"><span class="mediumtext">{MESSAGE_AUTHOR_FULL}</span></td>
+				</tr>
+
+				<tr>
+					<td class="row1" nowrap="nowrap" width="150"><span class="mediumtext"><b>{L_SENT_AT}:</b></span></td>
+					<td class="row1"><span class="mediumtext">{SENT_DATE}</span></td>
+				</tr>
+
+				<!-- IF S_TO_RECIPIENT -->
+					<tr>
+						<td class="row1" nowrap="nowrap" width="150"><span class="mediumtext"><b>{L_TO}:</b></span></td>
+						<td class="row1">
+						<!-- BEGIN to_recipient -->
+							<!-- IF to_recipient.IS_GROUP --><span class="mediumtext"><a href="{to_recipient.U_VIEW}">{to_recipient.NAME}</a></span><!-- ELSE -->{to_recipient.NAME_FULL}&nbsp;<!-- ENDIF -->
+						<!-- END to_recipient -->
+						</td>
+					</tr>
+				<!-- ENDIF -->
+
+				<!-- IF S_BCC_RECIPIENT -->
+					<tr>
+						<td class="row1" nowrap="nowrap" width="150"><span class="mediumtext"><b>{L_BCC}:</b></span></td>
+						<td class="row1">
+						<!-- BEGIN bcc_recipient -->
+							<!-- IF bcc_recipient.IS_GROUP --><span class="mediumtext"><a href="{bcc_recipient.U_VIEW}">{bcc_recipient.NAME}</a></span><!-- ELSE -->{bcc_recipient.NAME_FULL}&nbsp;<!-- ENDIF -->
+						<!-- END bcc_recipient -->
+						</td>
+					</tr>
+				<!-- ENDIF -->
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div style="padding: 2px;"></div>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+	<tr>
+		<td class="tableborder"> 
+			<table cellpadding="4" cellspacing="1" border="0" width="100%"> 
+
+				<tr>
+					<th nowrap="nowrap">{L_MESSAGE}</th>
+				</tr>
+
+				<tr>
+					<td class="row1" valign="top">
+						<table width="100%" cellspacing="5">
+						<tr>
+							<td class="row1">
+								<div class="postbody"><span class="mediumtext">{MESSAGE}</span></div>
+
+								<!-- IF S_HAS_ATTACHMENTS -->
+									<br clear="all" /><br />
+											
+									<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+										<tr>
+											<td class="tableborder"> 
+												<table cellpadding="4" cellspacing="1" border="0" width="100%"> 
+													<tr>
+														<td class="row2"><b class="mediumtext">{L_ATTACHMENTS}: </b></td>
+													</tr>
+													<!-- BEGIN attachment -->
+														<tr>
+															<td class="row2">{attachment.DISPLAY_ATTACHMENT}</td>
+														</tr>
+													<!-- END attachment -->
+												</table>
+											</td>
+										</tr>
+									</table>
+								<!-- ENDIF -->
+
+								<!-- IF S_DISPLAY_NOTICE -->
+									<span class="smalltext error"><br /><br />{L_DOWNLOAD_NOTICE}</span>
+								<!-- ENDIF -->
+								<!-- IF SIGNATURE -->
+									<span class="postbody"><br />_________________<br />{SIGNATURE}</span>
+								<!-- ENDIF -->
+								<!-- IF EDITED_MESSAGE -->
+									<span class="smalltext">{EDITED_MESSAGE}</span>
+								<!-- ENDIF -->
+
+								<!-- IF not S_HAS_ATTACHMENTS --><br clear="all" /><br /><!-- ENDIF -->
+
+								<table width="100%" cellspacing="0">
+								<tr valign="middle">
+									<td class="smalltext" align="{S_CONTENT_FLOW_END}"> <!-- IF U_DELETE --><a href="{U_DELETE}">{DELETE_IMG}</a> <!-- ENDIF --></td>
+								</tr>
+								</table>
+
+							</td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="row1"><div class="smalltext" style="float: {S_CONTENT_FLOW_BEGIN};">&nbsp;<!-- IF U_MESSAGE_AUTHOR --><a href="{U_MESSAGE_AUTHOR}">{PROFILE_IMG}</a> <!-- ENDIF --> <!-- IF U_EMAIL --><a href="{U_EMAIL}">{EMAIL_IMG}</a> <!-- ENDIF -->&nbsp;</div> <div class="smalltext" style="float: {S_CONTENT_FLOW_END};"><!-- IF U_EDIT --><a href="{U_EDIT}">{EDIT_IMG}</a> <!-- ENDIF --> <!-- IF U_QUOTE --><a href="{U_QUOTE}">{QUOTE_IMG}</a> <!-- ENDIF --> <!-- IF U_POST_REPLY_PM --><a href="{U_POST_REPLY_PM}">{REPLY_IMG}</a><!-- ENDIF -->&nbsp;</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div style="padding: 2px;"></div>
+<!-- INCLUDE ucp_pm_message_footer.html -->
+
+<br clear="all" />
+
+</div>
+
+<!-- IF S_DISPLAY_HISTORY --><!-- INCLUDE ucp_pm_history.html --><!-- ENDIF -->
+
+<!-- INCLUDE ucp_footer.html -->

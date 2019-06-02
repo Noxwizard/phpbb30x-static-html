@@ -1,0 +1,34 @@
+<!-- INCLUDE ucp_header.html -->
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+	<tr>
+		<td class="tableborder"> 
+			<table cellpadding="4" cellspacing="1" border="0" width="100%"> 
+				<tr>
+					<th colspan="2" valign="middle">{L_TITLE}</th>
+				</tr>
+				<tr>
+					<td class="row2" colspan="2"><span class="smalltext">{L_FOES_EXPLAIN}</span></td>
+				</tr>
+				<!-- IF ERROR -->
+					<tr>
+						<td class="row2" colspan="2" align="center"><span class="smalltext error">{ERROR}</span></td>
+					</tr>
+				<!-- ENDIF -->
+				<tr>
+					<td class="row1" width="40%"><b class="mediumtext">{L_YOUR_FOES}:</b><br /><span class="smalltext">{L_YOUR_FOES_EXPLAIN}</span></td>
+					<td class="row2" align="center"><!-- IF S_USERNAME_OPTIONS --><select class="btnpush" name="usernames[]" multiple="multiple" size="5">{S_USERNAME_OPTIONS}</select><!-- ELSE --><b class="mediumtext">{L_NO_FOES}</b><!-- ENDIF --></td>
+				</tr>
+				<tr>
+					<td class="row1"><b class="mediumtext">{L_ADD_FOES}:</b><br /><span class="smalltext">{L_ADD_FOES_EXPLAIN} [ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span></td>
+					<td class="row2" align="center"><textarea style="color: white" name="add" rows="5" cols="30">{USERNAMES}</textarea><br /></td>
+				</tr>
+				<tr>
+					<td class="catrow" colspan="2" align="center">{S_HIDDEN_FIELDS}<input class="btnpush" type="submit" name="submit" value="{L_SUBMIT}" />&nbsp;&nbsp;<input class="btnpush" type="reset" value="{L_RESET}" name="reset" /></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<!-- INCLUDE ucp_footer.html -->

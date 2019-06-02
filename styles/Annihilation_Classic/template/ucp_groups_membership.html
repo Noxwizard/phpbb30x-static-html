@@ -1,0 +1,99 @@
+<!-- INCLUDE ucp_header.html -->
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center">
+	<tr>
+		<td class="tableborder"> 
+			<table cellpadding="4" cellspacing="1" border="0" width="100%"> 
+				<tr>
+					<th colspan="3">{L_USERGROUPS}</th>
+				</tr>
+				<tr>
+					<td class="row1" colspan="3"><span class="mediumtext">{L_GROUPS_EXPLAIN}</span></td>
+				</tr>
+
+				<tr>
+					<th colspan="2">{L_GROUP_DETAILS}</th>
+					<th>{L_SELECT}</th>
+				</tr>
+
+				<!-- BEGIN leader -->
+					<!-- IF leader.S_FIRST_ROW -->
+						<tr>
+							<td class="row2" colspan="3"><b class="smalltext">{L_GROUP_LEADER}</b></td>
+						</tr>
+					<!-- ENDIF -->
+
+					<tr>
+						<td width="6%" align="center" nowrap="nowrap" class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->"><!-- IF S_CHANGE_DEFAULT --><input type="radio" class="radio" name="default"<!-- IF leader.S_GROUP_DEFAULT --> checked="checked"<!-- ENDIF --> value="{leader.GROUP_ID}" /><!-- ENDIF --></td>
+						<td class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->">
+							<b class="mediumtext"><a href="{leader.U_VIEW_GROUP}"<!-- IF leader.GROUP_COLOUR --> style="color: #{leader.GROUP_COLOUR};"<!-- ENDIF -->>{leader.GROUP_NAME}</a></b>
+							<!-- IF leader.GROUP_DESC --><br /><span class="mediumtext">{leader.GROUP_DESC}</span><!-- ENDIF -->
+							<!-- IF not leader.GROUP_SPECIAL --><br /><i class="smalltext">{leader.GROUP_STATUS}</i><!-- ENDIF -->
+						</td>
+						<td width="6%" align="center" nowrap="nowrap" class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->"><!-- IF not leader.GROUP_SPECIAL --><input type="radio" class="radio" name="selected" value="{leader.GROUP_ID}" /><!-- ENDIF --></td>
+					</tr>
+				<!-- END leader -->
+
+				<!-- BEGIN member -->
+					<!-- IF member.S_FIRST_ROW -->
+						<tr>
+							<td class="row2" colspan="3"><b class="smalltext">{L_GROUP_MEMBER}</b></td>
+						</tr>
+					<!-- ENDIF -->
+
+					<tr>
+						<td width="6%" align="center" nowrap="nowrap" class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->"><!-- IF S_CHANGE_DEFAULT --><input type="radio" class="radio" name="default"<!-- IF member.S_GROUP_DEFAULT --> checked="checked"<!-- ENDIF --> value="{member.GROUP_ID}" /><!-- ENDIF --></td>
+						<td class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->">
+							<b class="mediumtext"><a href="{member.U_VIEW_GROUP}"<!-- IF member.GROUP_COLOUR --> style="color: #{member.GROUP_COLOUR};"<!-- ENDIF -->>{member.GROUP_NAME}</a></b>
+							<!-- IF member.GROUP_DESC --><br /><span class="mediumtext">{member.GROUP_DESC}</span><!-- ENDIF -->
+							<!-- IF not member.GROUP_SPECIAL --><br /><i class="smalltext">{member.GROUP_STATUS}</i><!-- ENDIF -->
+						</td>
+						<td width="6%" align="center" nowrap="nowrap" class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->"><!-- IF not member.GROUP_SPECIAL --><input type="radio" class="radio" name="selected" value="{member.GROUP_ID}" /><!-- ENDIF --></td>
+					</tr>
+				<!-- END member -->
+
+				<!-- BEGIN pending -->
+					<!-- IF pending.S_FIRST_ROW -->
+						<tr>
+							<td class="row2" colspan="3"><b class="smalltext">{L_GROUP_PENDING}</b></td>
+						</tr>
+					<!-- ENDIF -->
+
+					<tr>
+						<td width="6%" align="center" nowrap="nowrap" class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->">&nbsp;</td>
+						<td class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->">
+							<b class="mediumtext"><a href="{pending.U_VIEW_GROUP}"<!-- IF pending.GROUP_COLOUR --> style="color: #{pending.GROUP_COLOUR};"<!-- ENDIF -->>{pending.GROUP_NAME}</a></b>
+							<!-- IF pending.GROUP_DESC --><br /><span class="mediumtext">{pending.GROUP_DESC}</span><!-- ENDIF -->
+							<!-- IF not pending.GROUP_SPECIAL --><br /><i class="smalltext">{pending.GROUP_STATUS}</i><!-- ENDIF -->
+						</td>
+						<td width="6%" align="center" nowrap="nowrap" class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->"><!-- IF not pending.GROUP_SPECIAL --><input type="radio" class="radio" name="selected" value="{pending.GROUP_ID}" /><!-- ENDIF --></td>
+					</tr>
+				<!-- END pending -->
+
+				<!-- BEGIN nonmember -->
+					<!-- IF nonmember.S_FIRST_ROW -->
+						<tr>
+							<td class="row2" colspan="3"><b class="smalltext">{L_GROUP_NONMEMBER}</b></td>
+						</tr>
+					<!-- ENDIF -->
+
+					<tr>
+						<td width="6%" align="center" nowrap="nowrap" class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->">&nbsp;</td>
+						<td class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->">
+							<b class="mediumtext"><a href="{nonmember.U_VIEW_GROUP}"<!-- IF nonmember.GROUP_COLOUR --> style="color: #{nonmember.GROUP_COLOUR};"<!-- ENDIF -->>{nonmember.GROUP_NAME}</a></b>
+							<!-- IF nonmember.GROUP_DESC --><br /><span class="mediumtext">{nonmember.GROUP_DESC}</span><!-- ENDIF -->
+							<!-- IF not nonmember.GROUP_SPECIAL --><br /><i class="smalltext">{nonmember.GROUP_STATUS}</i><!-- ENDIF -->
+						</td>
+						<td width="6%" align="center" nowrap="nowrap" class="<!-- IF member.S_ROW_COUNT is even -->row1<!-- ELSE -->row2<!-- ENDIF -->"><!-- IF nonmember.S_CAN_JOIN --><input type="radio" class="radio" name="selected" value="{nonmember.GROUP_ID}" /><!-- ENDIF --></td>
+					</tr>
+				<!-- END nonmember -->
+
+				<tr>
+					<td class="catrow" colspan="3"><!-- IF S_CHANGE_DEFAULT --><div style="float: {S_CONTENT_FLOW_BEGIN};"><input class="btnpush" type="submit" name="change_default" value="{L_CHANGE_DEFAULT_GROUP}" /></div><!-- ENDIF --><div style="float: {S_CONTENT_FLOW_END};"><span class="mediumtext">{L_SELECT}: </span><select class="btnpush" name="action"><option value="join">{L_JOIN_SELECTED}</option><option value="resign">{L_RESIGN_SELECTED}</option><option value="demote">{L_DEMOTE_SELECTED}</option></select>&nbsp;<input class="btnpush" type="submit" name="submit" value="{L_SUBMIT}" />&nbsp;</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<!-- INCLUDE ucp_footer.html -->
